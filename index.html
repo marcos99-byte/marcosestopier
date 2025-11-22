@@ -1,0 +1,231 @@
+K<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cotiza tu Seguro de Auto con Marcos Estopier</title>
+  <style>
+    :root{
+      --navy:#001233;
+      --steel:#33415c;
+      --bg:#eef1f8;
+      --card:#ffffff;
+      --muted:#778da9;
+    }
+    *{box-sizing:border-box}
+    body {font-family: Inter, system-ui, Arial, sans-serif; margin:0; background:var(--bg); color:#0d1b2a; overflow-x:hidden; -webkit-font-smoothing:antialiased}
+    header {background: linear-gradient(135deg,var(--navy),var(--steel)); color:white; padding:36px 18px; text-align:center; animation: fadeIn 0.9s ease-in-out;}
+    @keyframes fadeIn {from{opacity:0; transform:translateY(-12px)} to{opacity:1; transform:translateY(0)}}
+    .container {max-width:980px; margin:18px auto; background:var(--card); padding:22px; border-radius:14px; box-shadow:0 8px 30px rgba(13,27,42,0.08);}
+    h1{margin:0 0 6px}
+    p.lead{margin:0 0 18px; color:var(--muted)}
+
+    /* Form layout */
+    form{width:100%; max-width:520px; margin:0 auto; padding:8px}
+    label{display:block; margin-top:12px; font-weight:700; color:#1b263b}
+    input,select{width:100%; padding:12px 14px; border-radius:10px; border:1px solid #d7dcef; margin-top:6px; font-size:15px; background:#f7f8fc; transition:transform .18s ease, box-shadow .18s ease}
+    input:focus,select:focus{transform:translateY(-2px); box-shadow:0 8px 20px rgba(16,24,40,0.06); outline:none; border-color:var(--muted)}
+    .two-cols{display:flex; gap:12px}
+    .two-cols > div{flex:1}
+    button{width:100%; background:var(--navy); color:white; padding:14px; margin-top:18px; border:none; border-radius:12px; font-size:16px; cursor:pointer; transition:transform .18s ease, background .18s}
+    button:hover{transform:translateY(-3px); background:var(--steel)}
+
+    .progress{height:8px; background:#e9eefb; border-radius:999px; overflow:hidden; margin-top:12px}
+    .progress > span{display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--navy),#25d366); transition:width .4s ease}
+
+    /* Cards comparativa */
+    .cards-proteccion{display:flex; gap:14px; margin-top:26px; flex-wrap:wrap; justify-content:center}
+    .card-proteccion{background:var(--card); padding:16px; border-radius:12px; box-shadow:0 6px 18px rgba(13,27,42,0.06); width:calc(33% - 18px); min-width:220px; display:flex; flex-direction:column; align-items:center; text-align:center; transition:transform .22s ease, box-shadow .22s}
+    .card-proteccion img{width:52px; height:52px; margin-bottom:10px}
+    .card-proteccion h4{margin:6px 0 8px}
+    .card-proteccion p{margin:0; color:#33415c}
+    .card-proteccion:hover{transform:translateY(-6px); box-shadow:0 14px 30px rgba(13,27,42,0.10)}
+
+    /* Aseguradoras logos */
+    .aseguradoras{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:26px}
+    .aseguradoras img{width:84px; height:auto; object-fit:contain; filter:grayscale(30%) contrast(.95); opacity:.95; transition:transform .22s ease, filter .22s}
+    .aseguradoras img:hover{transform:translateY(-6px) scale(1.06); filter:none}
+
+    /* Footer */
+    footer{margin-top:26px; text-align:center; color:#6b7890; font-size:13px; padding-bottom:12px}
+
+    /* Responsive */
+    @media (max-width:840px){.card-proteccion{width:48%}}
+    @media (max-width:520px){
+      .two-cols{flex-direction:column}
+      form{max-width:92%; padding:6px}
+      .card-proteccion{width:100%}
+      .aseguradoras img{width:64px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cotiza tu Seguro de Auto con Marcos Estopier</h1>
+    <p class="lead">Calificación rápida • Mejores aseguradoras • Respuesta inmediata</p>
+  </header>
+
+  <div class="container">
+    <h2 style="text-align:center">Completa tu información</h2>
+    <p style="text-align:center; color:var(--muted)">Rellena los datos básicos para obtener una cotización real. Solo tardas ~1 minuto.</p>
+
+    <form id="formulario">
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" required />
+
+      <label for="telefono">WhatsApp (ej. 55xxxxxxxx)</label>
+      <input type="tel" id="telefono" required />
+
+      <div class="two-cols">
+        <div>
+          <label for="anio">Año del vehículo</label>
+          <input type="number" id="anio" min="1900" max="2099" required />
+        </div>
+        <div>
+          <label for="nacimiento">Fecha de nacimiento</label>
+          <input type="date" id="nacimiento" required />
+        </div>
+      </div>
+
+      <div class="two-cols">
+        <div>
+          <label for="marca">Marca</label>
+          <input type="text" id="marca" required />
+        </div>
+        <div>
+          <label for="modelo">Modelo</label>
+          <input type="text" id="modelo" required />
+        </div>
+      </div>
+
+      <div class="two-cols">
+        <div>
+          <label for="version">Versión</label>
+          <input type="text" id="version" placeholder="Ej. LX, Sport, Touring" required />
+        </div>
+        <div>
+          <label for="cobertura">¿Qué tipo de protección buscas?</label>
+          <select id="cobertura" required>
+            <option value="">Selecciona…</option>
+            <option value="Básica">Básica</option>
+            <option value="Limitada">Limitada</option>
+            <option value="Amplia">Amplia</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="intencion">¿Listo para contratar?</label>
+      <select id="intencion" required>
+        <option value="">Selecciona…</option>
+        <option>Hoy</option>
+        <option>Esta semana</option>
+        <option>Solo estoy comparando</option>
+      </select>
+
+      <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+      <button type="submit">Pedir cotización por WhatsApp</button>
+    </form>
+
+    <!-- Comparativa visual como tarjetas con iconos -->
+    <h3 style="margin-top:28px; text-align:center">Comparativa visual de protección</h3>
+    <div class="cards-proteccion">
+      <div class="card-proteccion">
+        <img src="https://cdn-icons-png.flaticon.com/512/929/929430.png" alt="Básica" />
+        <h4>Básica</h4>
+        <p>Responsabilidad civil · Gastos médicos · Gastos legales · Asistencia vial</p>
+      </div>
+
+      <div class="card-proteccion">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Limitada" />
+        <h4>Limitada</h4>
+        <p>Robo total · Responsabilidad civil · Gastos médicos · Gastos legales · Asistencia vial</p>
+      </div>
+
+      <div class="card-proteccion">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Amplia" />
+        <h4>Amplia</h4>
+        <p>Daños materiales · Robo total · Responsabilidad civil · Gastos médicos · Gastos legales · Coberturas adicionales</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:22px; text-align:center">Aseguradoras con las que trabajamos</h3>
+    <div class="aseguradoras" aria-hidden="false">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Qu%C3%A1litas_logo.png" alt="Qualitas" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Mapfre_logo.svg" alt="Mapfre" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Chubb_Limited_logo.svg" alt="Chubb" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/HDI_Seguros_logo.png" alt="HDI" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Grupo_Financiero_Banorte_logo.svg" alt="Banorte" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Momento_logo.png" alt="Momento Seguros" />
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Cotizador de Autos — Atención personalizada por agente certificado.
+  </footer>
+
+  <script>
+    function calcularEdad(fechaNacimiento) {
+      const hoy = new Date();
+      const nacimiento = new Date(fechaNacimiento);
+      let edad = hoy.getFullYear() - nacimiento.getFullYear();
+      const m = hoy.getMonth() - nacimiento.getMonth();
+      if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) edad--;
+      return edad;
+    }
+
+    const form = document.getElementById("formulario");
+    const progressBar = document.getElementById('progressBar');
+
+    function updateProgress() {
+      const campos = ['nombre','telefono','anio','nacimiento','marca','modelo','version','cobertura','intencion'];
+      let llenos = 0;
+      campos.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (el.value && el.value.toString().trim() !== '') llenos++;
+      });
+      progressBar.style.width = Math.round((llenos / campos.length) * 100) + '%';
+    }
+
+    ['nombre','telefono','anio','nacimiento','marca','modelo','version','cobertura','intencion'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', updateProgress);
+    });
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value.trim();
+      const telefono = document.getElementById("telefono").value.trim();
+      const anio = document.getElementById("anio").value.trim();
+      const marca = document.getElementById("marca").value.trim();
+      const modelo = document.getElementById("modelo").value.trim();
+      const version = document.getElementById("version").value.trim();
+      const cobertura = document.getElementById("cobertura").value;
+      const intencion = document.getElementById("intencion").value;
+      const nacimiento = document.getElementById("nacimiento").value;
+
+      if (!nacimiento) {alert('Por favor ingresa la fecha de nacimiento.'); return;}
+      const edad = calcularEdad(nacimiento);
+      if (isNaN(edad) || edad < 18) {alert('Debes ser mayor de edad para cotizar un seguro.'); return;}
+      if (!nombre || !telefono || !anio || !marca || !modelo || !version || !cobertura || !intencion) {alert('Por favor completa todos los campos obligatorios antes de continuar.'); return;}
+
+      const mensajeTexto = `Hola Marcos Estopier, me interesa una cotización de seguro de auto.\n\n` +
+        `Nombre: ${nombre}\n` +
+        `WhatsApp: ${telefono}\n` +
+        `Fecha de nacimiento: ${nacimiento} (Edad: ${edad})\n` +
+        `Año: ${anio}\n` +
+        `Marca: ${marca}\n` +
+        `Modelo: ${modelo}\n` +
+        `Versión: ${version}\n` +
+        `Protección deseada: ${cobertura}\n` +
+        `Intención de compra: ${intencion}`;
+
+      const tuNumero = '5217442980298';
+      window.open(`https://wa.me/${tuNumero}?text=` + encodeURIComponent(mensajeTexto), '_blank');
+    });
+
+    updateProgress();
+  </script>
+</body>
+</html>
